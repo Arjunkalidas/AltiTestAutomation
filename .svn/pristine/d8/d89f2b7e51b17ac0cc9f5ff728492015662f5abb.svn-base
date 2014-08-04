@@ -1,0 +1,25 @@
+package aiframework.core.utils;
+
+public class IOS{
+
+	private String udid;
+	private String bundleid;
+
+	public String getUdid() {
+		return udid;
+	}
+
+	public void setUdid(String udid) {
+		this.udid = udid;
+	}
+
+	public String getBundleid() {
+		return bundleid;
+	}
+
+	public void setBundleid(String bundleid) {
+		this.bundleid = bundleid;
+	}
+	
+
+}

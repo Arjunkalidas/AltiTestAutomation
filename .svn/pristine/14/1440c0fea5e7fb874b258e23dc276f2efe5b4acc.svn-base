@@ -1,0 +1,14 @@
+package aiframework.core.utils;
+
+public class TestPlatformProperties {
+
+	
+	public static void main(String[] args) {
+
+		Platform platform = new Platform();
+		platform.setAndrdoid().setPackageName("abc").setActivity("def");
+		Android android= new Android();
+		System.out.println(android.packageName);
+		System.out.println(android.activity);
+	}
+}

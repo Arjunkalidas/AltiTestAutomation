@@ -1,0 +1,181 @@
+package aiframework.core.utils;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
+
+public class myXLFile {
+
+	public static void main(String args[]) throws Exception {
+		String fileName = "C:\\Users\\aafrin\\Desktop\\Amazon_Properties_v2.xls";
+		String sheetName = "StaticProperties";
+		String lookUpString = "url";
+		String label = "Products";
+		Map hm = new HashMap<String, List<String>>();
+		Object[][] obj =null;
+		List<String> keyslist=Arrays.asList("userName","passWord","url");
+		obj=newSingleKeyMultipleValues(fileName, sheetName,keyslist);
+	}
+
+	public static Object[][] readXLData(String fileName, String sheetName,String label) {
+		// ** This function is created to initialize properties for test run
+		Object[][] obj =null;
+		try {
+			Workbook workbook1 = Workbook.getWorkbook(new File(fileName));
+			Sheet s1 = workbook1.getSheet(sheetName);
+
+			String labelBegin = label + "Begin";
+			String labelEnd = label + "End";
+
+			Cell labelBeginCell = s1.findCell(labelBegin);
+			Cell labelEndCell = s1.findCell(labelEnd);
+
+			int rowCount = labelEndCell.getRow() - labelBeginCell.getRow() - 1;
+			int columnCount = labelEndCell.getColumn()- labelBeginCell.getColumn() + 1;
+
+			obj = new Object[rowCount][columnCount];
+			System.out.println(rowCount + " " + columnCount);
+
+			for (int i = labelBeginCell.getColumn(), k = 0; i < labelEndCell.getColumn() + 1; i++, k++) {
+				for (int j = labelBeginCell.getRow() + 1, m = 0; j < labelEndCell.getRow(); j++, m++) {
+					obj[m][k] = s1.getCell(i, j).getContents();
+					System.out.println(obj[m][k]);
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			return obj;
+		}
+	}
+
+	protected static Map readXLProperties(String fileName, String SheetName) {
+
+		Map hm = new HashMap<String, String>();
+		try {
+			String key = null, value = null;
+			Workbook workbook1 = Workbook.getWorkbook(new File(fileName));
+			Sheet s1 = workbook1.getSheet(SheetName);
+
+			for (int j = 0; j < s1.getRows(); j++) {
+				for (int i = 0; i < s1.getColumns(); i++) {
+					// System.out.println(s1.getCell(i, j).getContents());
+
+					// First Column would have keys hence check whether we are @
+					// first Column
+					if (i == 0) {
+						key = s1.getCell(i, j).getContents();
+					} else {
+						value = s1.getCell(i, j).getContents();
+					}
+				}
+				hm.put(key, value);
+			}
+			// System.out.println(hm.keySet());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return hm;
+	}
+
+	protected static Object[][] singleKeyMultipleValues(String fileName, String SheetName) {
+
+		Map hm = new HashMap<String, List<String>>();
+		Object[][] obj =null;
+		try {
+			String key = null, value = null;
+			Workbook workbook1 = Workbook.getWorkbook(new File(fileName));
+			Sheet s1 = workbook1.getSheet(SheetName);
+
+			for (int j = 0; j < s1.getRows(); j++) {
+				List li=new ArrayList<String>();		
+				for (int i = 0; i < s1.getColumns(); i++) {
+					if (i == 0) {
+						key = s1.getCell(i, j).getContents();
+					} else {
+						li.add( s1.getCell(i, j).getContents());
+					}
+				}
+				hm.put(key, li);
+			}
+			Set<String>keys=hm.keySet();
+			
+			obj= new Object[2][keys.size()];
+			int i=0;
+			
+			for(String key1:keys)
+			{
+				List<String> tempMap = (List<String>) hm.get(key1);
+				int j=0;
+				for (String string : tempMap) {
+					obj[j][i]=string;
+					System.out.println(obj[j][i]);
+					j++;
+				}
+				i++;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+		return obj;
+		}
+	}
+
+	public static Object[][] newSingleKeyMultipleValues(String fileName, String SheetName, List<String> keyslist) {
+
+		Map hm = new HashMap<String, List<String>>();
+		Object[][] obj =null;
+		List li=null;
+		try {
+			String key = null, value = null;
+			Workbook workbook1 = Workbook.getWorkbook(new File(fileName));
+			Sheet s1 = workbook1.getSheet(SheetName);
+
+			for (int j = 0; j < s1.getRows(); j++) {
+				li=new ArrayList<String>();		
+				for (int i = 0; i < s1.getColumns(); i++) {
+					if (i == 0) {
+						key = s1.getCell(i, j).getContents();
+					} else {
+						li.add( s1.getCell(i, j).getContents());
+					}
+				}
+				hm.put(key, li);
+			}
+			List<String>keys=keyslist;
+			
+			obj= new Object[li.size()][keys.size()];
+			int i=0;
+			
+			for(String key1:keys)
+			{
+				List<String> tempMap = (List<String>) hm.get(key1);
+				int j=0;
+				for (String string : tempMap) {
+					obj[j][i]=string;
+					System.out.println(obj[j][i]);
+					j++;
+				}
+				i++;
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			return obj;
+		}
+	}
+}

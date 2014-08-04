@@ -1,0 +1,120 @@
+package aiframework.core.utils;
+
+
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.JavascriptExecutor;
+
+import org.openqa.selenium.NoSuchElementException;
+
+import org.openqa.selenium.UnsupportedCommandException;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+	public class TestBase {
+	public static RemoteWebDriver driver;
+	public static WebElement myDynamicElement;
+	public static JavascriptExecutor js = (JavascriptExecutor)driver;
+		public WebElement element(String locator) {
+		
+		WebElement element = null;
+		
+		try {
+		
+		element = driver.findElement(By.id(MyRepository.getNewLocator(locator, "id")));
+		
+			} catch (NoSuchElementException e) {
+			
+			try {
+			
+			element = driver.findElement(By.name(MyRepository.getNewLocator(locator, "name")));
+			
+			
+				} catch (NoSuchElementException e1) {
+				
+				try{
+				
+				element = driver.findElement(By.className(MyRepository.getNewLocator(locator, "className")));
+				
+				}
+				
+				catch(NoSuchElementException  e2)
+				
+					{
+					
+					try{
+					
+					element=driver.findElement(By.cssSelector(MyRepository.getNewLocator(locator, "cssSelector")));
+					
+					}
+					
+						catch(NoSuchElementException e3){
+						
+						try{
+						
+						element = driver.findElement(By.linkText(MyRepository.getNewLocator(locator,"linkText")));
+						
+						}
+						
+						catch(NoSuchElementException e4)
+						
+							{
+							
+							try{
+							
+							element = driver.findElement(By.partialLinkText(MyRepository.getNewLocator(locator,"partialLinkText"))); 
+							
+							}
+							
+							catch(NoSuchElementException e5)
+							
+								{
+								
+								try{
+								
+								element = driver.findElement(By.tagName(MyRepository.getNewLocator(locator,"tagName")));
+								
+								}
+								
+								catch(NoSuchElementException e6)
+								
+									{
+									
+									try{
+									
+									element = driver.findElement(By.xpath(MyRepository.getNewLocator(locator,"xpath")));
+									
+									}
+									
+									catch(NoSuchElementException e7)
+									
+										{
+										
+										e7.printStackTrace();
+										
+										}
+									
+									}
+								
+								}
+							
+							}
+						
+						}
+					
+					}
+				
+				}
+			
+			}
+		
+		return element;
+		
+		}
+	
+}

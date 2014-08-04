@@ -1,0 +1,94 @@
+package com.altifin.lab;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import aiframework.altimetrik.AltimetrikBase;
+
+public class OldAlftiFinBase <T extends OldAlftiFinBase<T>>{
+	public static RemoteWebDriver driver;
+	static WebElement myDynamicWebElement;
+	public static JavascriptExecutor js = driver;
+	public static final String MESSAGE_TO_SEND = "50000191";
+	
+	private OldAlftiFinBase enterAgentID(String agentID) {
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[2]/android.widget.EditText[1]")).sendKeys(agentID);
+		return this;
+	}
+
+	protected OldAlftiFinBase enterCustomerID() {
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.EditText[1]")).sendKeys(MESSAGE_TO_SEND);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this;
+	}
+
+	private OldAlftiFinBase enterPassword(String password) {
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[2]/android.widget.EditText[2]")).sendKeys(password);
+		return this;
+	}
+
+	public OldAlftiFinBase loginToAltifinFI(String agentID, String password) {
+			enterAgentID(agentID)
+			.enterPassword(password)
+			.clickLogin();
+		return this;
+	}
+
+	public OldAlftiFinBase selectBankingServices() {
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.TabHost[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TabWidget[1]/android.widget.RelativeLayout[2]/android.widget.ImageView[1]")).click();
+		return this;
+	}
+
+	public OldAlftiFinBase clickLogin() {
+		myDynamicWebElement = (new WebDriverWait(driver, 100)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[2]/android.widget.Button[1]")));
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[2]/android.widget.Button[1]")).click();
+		return this;
+	}
+
+//	public abstract BalanceEnquiry checkTheBalance() ;
+//	public abstract BalanceEnquiry clickDone() ;
+
+	public OldAlftiFinBase setUp() {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("device", "Android");
+		capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+		capabilities.setCapability(CapabilityType.VERSION, "4.2");
+		capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
+		capabilities.setCapability("app","/Users/kasim/Downloads/AltiFinFI.apk");
+		capabilities.setCapability("app-package", "com.altipay.fi.launcher");
+		capabilities.setCapability("app-activity", ".AltipayFIActivity");
+	
+		try {
+	
+			driver = new RemoteWebDriver(new URL(
+					"http://192.168.70.70:4725/wd/hub"), capabilities);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		return this;
+	}
+
+}

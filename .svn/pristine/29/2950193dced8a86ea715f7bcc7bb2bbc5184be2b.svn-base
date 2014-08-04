@@ -1,0 +1,80 @@
+package aiframework.altimetrik;
+
+
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+public class Mail {
+	
+	// need to get information for the mail server
+	String d_email = "altimetriktest1@gmail.com", d_password = "passport2alti!",
+			d_host = "smtp.gmail.com", d_port = "587",
+			m_to = "muhammad.kasim@altimetrik.com", m_subject = "subject",
+			m_text = "this is just a test mail";
+	Properties props = new Properties();
+	SecurityManager security;
+
+	public Mail()
+	{
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.auth", "true");
+	}
+	
+	public void mailSend(String [] args) {
+		security = System.getSecurityManager();
+		m_text=args[0];
+		m_subject=args[1];
+		d_email = args[2];
+		m_to=args[3];
+		d_host= args[4];
+		d_port=args[5];
+		d_password=args[6];
+		try {
+			Authenticator auth = new SMTPAuthenticator();
+			Session session = Session.getInstance(props, auth);
+			MimeMessage msg = new MimeMessage(session);
+			props.put("mail.smtp.user", d_email);
+			props.put("mail.smtp.host", d_host);
+			props.put("mail.smtp.port", d_port);
+			msg.setText(m_text);
+			msg.setSubject(m_subject);
+			msg.setFrom(new InternetAddress(d_email));
+			InternetAddress[] TheAddresses =
+                    InternetAddress.parse(m_to);
+			msg.addRecipients(Message.RecipientType.TO,
+					TheAddresses);
+			Transport.send(msg);
+		} catch (Exception mex) {
+			mex.printStackTrace();
+		}
+	}
+
+	private class SMTPAuthenticator extends javax.mail.Authenticator {
+		public PasswordAuthentication getPasswordAuthentication() {
+			return new PasswordAuthentication(d_email, d_password);
+		}
+	}
+
+	public static void main(String[] args) {
+		Mail m= new Mail();
+		ReadPropertiesFile rpf =new ReadPropertiesFile ();
+		String message=rpf.getProperty("altimetrik.ini","message");
+		String username=rpf.getProperty("altimetrik.ini","user_name");
+//		String recipients=rpf.getProperty("altimetrik.ini","recipients");
+		String recipients=rpf.getProperty("altimetrik.ini","recipients")+","+rpf.getProperty("altimetrik.ini","recipients_sup");
+		String smtp_server=rpf.getProperty("altimetrik.ini","smtp_server");
+		String smtp_port=rpf.getProperty("altimetrik.ini","smtp_port");
+		String smtp_password=rpf.getProperty("altimetrik.ini","smtp_password");
+		
+		System.out.println(message+ username+recipients+smtp_server+smtp_port+smtp_password);
+		m.mailSend(new String []{message,"subject", username,recipients,
+				smtp_server,smtp_port,smtp_password});
+	}
+}

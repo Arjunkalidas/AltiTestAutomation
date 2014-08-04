@@ -1,0 +1,10 @@
+package aiframework.core.utils;
+
+public class Platform{
+	public static Android setAndrdoid() {
+		return new Android();
+	}
+	public static IOS  setIOS() {
+		return new IOS();
+	}
+}

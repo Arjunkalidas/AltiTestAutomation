@@ -1,0 +1,83 @@
+package com.eriBank;
+
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class TestEriBank extends EriBank {
+
+	EriBank eriBank = new EriBank();
+
+	@BeforeTest
+	public TestEriBank setUp(){
+		eriBank
+		.appiumVersion( appiumVersion)
+		.platformName(platformName)
+		.identifyPlatform()		
+		.platformVersion(platformVersion)
+		.deviceName(deviceName)
+		.applicationPath(applicationPath)
+		.packageName(packageName)
+		.activityName(activityName)
+		.createRemoteWebDriver("localhost", "4725")
+		.timeOut(60);
+		
+		/*eriBank
+		.appiumVersion(appiumVersion)
+		.platformName(platformName)
+		.identifyPlatform()
+		.platformVersion(platformVersion)
+		.deviceName(deviceName)
+		.bundleId(bundleId)
+		.udId(udId)
+		.createRemoteWebDriver("localhost", "4756")
+		.timeOut(60);*/
+		return this;
+	}
+
+	@Test(groups = {"functionalitytest", "transactiontest"})
+	public void testCaseOne(){
+		eriBank
+		.enterUserName()
+		.enterPassword()
+		.submitCredentials()
+		.makePayment()
+		.enterPhone()
+		.enterName()
+		.enterAmount()
+		.enterCountry()
+		.searchCountry()
+		.selectCountry()
+		.sendPayment()
+		.confirmPayment()
+		.logout();
+	}
+	
+	@Test(groups = {"functionalitytest", "usabilitytest"})
+	public void testCaseTwo(){
+		eriBank
+		.enterUserName()
+		.enterPassword()
+		.submitCredentials()
+		.makePayment()
+		.enterPhone()
+		.enterName()
+		.enterAmount()
+		.enterCountry()
+		.searchCountry()
+		.selectCountry();
+	}
+
+	@AfterTest
+	public TestEriBank testtearDown(){
+		eriBank.tearDown();
+		return this;
+	}
+	
+	/*@AfterSuite
+	public TestEriBank tearDown(){
+		eriBank.tearDown();
+		return this;
+	}*/
+}

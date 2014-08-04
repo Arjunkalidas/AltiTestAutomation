@@ -1,0 +1,1 @@
+kill -9 `ps -aef|grep appium|head -1|cut -d " " -f 5`

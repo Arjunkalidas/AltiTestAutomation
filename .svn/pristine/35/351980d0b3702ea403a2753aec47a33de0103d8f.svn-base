@@ -1,0 +1,9 @@
+package aiframework.core.utils;
+
+public class ReadLocators {
+
+	public static void main(String[] args) {
+		
+	}
+	
+}

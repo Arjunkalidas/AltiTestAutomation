@@ -1,0 +1,30 @@
+package aiframework.altimetrik;
+
+public class AltimetrikWebMonitor extends AltimetrikHarnessLibrary{
+	
+	public static void main(String args[]) {
+		try{
+			AlitmetrikHarnessLibrary.setup();
+			taxNebreska();
+			AlitmetrikHarnessLibrary.tearDownFirefoxDriver();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public static void taxNebreska() {
+			AlitmetrikHarnessLibrary
+				.waitForAvaTaxPage(pageTitle)
+				.enterAddress("address", address)
+				.enterCity("city", city)
+				.enterMandatoryZip("zip", zip)
+				.enterOptionalZip("plusfour", plusfour)
+				.enterAmount("amount", amount)
+				.clearDate("date")
+				.enterDate("date", date)
+				.submitData()
+				.verifyTaxRate(taxRate);
+	}
+}

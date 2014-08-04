@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false" allow-return-values="true">
+    
+    <!-- <listeners>
+    <listener class-name="com.eriBank.CustomListener" />
+    </listeners>-->
+    
+    
+	<!-- <test name="Test" preserve-order="false" allow-return-values="true">
+		<classes>
+			<class name="com.automation.lab.GoogleMaps.java" />
+			<methods>
+			    <include name="m1" />
+			    <include name="m2" />
+			</methods>
+		</classes>
+	</test> 
+
+	<test name="Functional Test">
+		<classes>
+			<class name="com.automation.lab.HelloWorld.java" />
+			<class name="com.automation.lab.HelloWorldChild.java" />
+		</classes>
+	</test>
+
+	<test name="Usability Test">
+		<packages>
+			<package name="com.automation.lab" />
+		</packages>
+	</test>
+
+	<test name="Regression Test">
+		<groups>
+			<run>
+				<exclude name="brokenTests" />
+				<include name="checkinTests" />
+			</run>
+		</groups>
+	</test> -->
+	
+	<!-- <test name="Functional test">
+		<classes>
+			<class name="com.eriBank.EriBankDev" />
+		</classes>
+	</test>-->
+
+	<!-- <test name="Functional test">
+		<classes>
+			<class name="com.icici.automation.TestIcici" />
+		</classes>
+	</test> -->
+
+	<test name="Usability test">
+		<classes>
+			<class name="com.icici.automation.TestIcici" />
+		</classes>
+	</test>
+</suite> <!-- Suite -->

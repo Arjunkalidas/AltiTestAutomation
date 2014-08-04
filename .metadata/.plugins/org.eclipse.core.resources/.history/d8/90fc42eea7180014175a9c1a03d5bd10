@@ -1,0 +1,54 @@
+package com.icici.automation;
+
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class TestIcici extends IciciBase {
+
+	private static IciciBase icicibase = new IciciBase();
+
+	@BeforeSuite
+	public IciciBase setUp(){
+		icicibase.setUp(application, host, port);
+		return this;
+	}
+
+//	@Test(dataProvider="iciciInvaliddata", groups = {"Functionaltest"})
+//	public void testOne(String loginPIN, String invalidloginPIN){
+//		icicibase.activateAccFailScenario(loginPIN, invalidloginPIN).goBack().goBack();
+//	}
+//
+//	@Test(dataProvider="iciciValiddata", groups = {"activationtest"})
+//	public void testTwo(){
+//		icicibase.activateAccPassScenario(loginPIN, validloginPIN).goBack();
+//	}
+
+	@Test(groups = {"usabilitytest"})
+	public void testThree(){
+		icicibase.locateUsOption().findATM().goBack().findBranch().goBack();
+	}
+	
+	@DataProvider(name="iciciInvaliddata")
+	public  Object[][] iciciInvaliddata() {
+		Object[][] data = {{"1234", "1245"}};
+		return data;
+	}	
+
+	@DataProvider(name="iciciValiddata")
+	public  Object[][] iciciValiddata() {
+		Object[][] data = {{"1234", "1234"}};
+		return data;
+	}
+
+	@AfterSuite
+	public  IciciBase tearDown()
+	{
+		icicibase.tearDown();
+		return this;
+	}
+
+}
+
+

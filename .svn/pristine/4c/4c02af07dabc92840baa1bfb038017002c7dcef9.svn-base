@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+
+	<!-- <test name="Regression Test"> <groups> <define name="functionalitytest"> 
+		</define> <define name="all"> <include name="transactiontest" /> <include 
+		name="usabilitytest" /> </define> <run> <include name="all" /> </run> </groups> 
+		<classes> <class name="com.EriBank.TestEriBank.java" /> </classes> </test> -->
+	<test name="Test1">
+		<groups>
+			<run>
+				<include name="functionalitytest" />
+			</run>
+		</groups>
+		<packages>
+			<package name="com.EriBank" />
+		</packages>
+		<classes>
+		    <class name="com.EriBank.TestEriBank" />
+		</classes>
+	</test>
+
+</suite> <!-- Suite -->

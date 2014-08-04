@@ -1,0 +1,35 @@
+package com.EriBank;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import aiframework.core.utils.TestBase;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+
+public class TestScript1 {
+	public static void main(String[] args) throws MalformedURLException {
+		RemoteWebDriver wd;
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("appium-version", "1.0");
+		capabilities.setCapability("platformName", "iOS");
+		capabilities.setCapability("platformVersion", "7.1.2");
+		capabilities.setCapability("deviceName", "iPhone Retina (4-inch)");
+		//capabilities.setCapability("app", "/Users/Sbushan/Desktop/ExperiBank2.app");
+		
+			capabilities.setCapability("bundleId", "com.altimetrik.abc");
+			
+			capabilities.setCapability("udid","f477f90c7d5475a81dfe7acb3a56f6e0cef70b0c");
+			
+		wd = new RemoteWebDriver(new URL("http://localhost:4749/wd/hub"), capabilities);
+		wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		wd.findElement(By.name("usernameTextField")).sendKeys("company");
+		wd.findElement(By.name("passwordTextField")).sendKeys("company");
+		wd.findElement(By.name("loginButton")).click();
+		wd.close();
+	}
+}

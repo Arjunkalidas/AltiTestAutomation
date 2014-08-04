@@ -1,0 +1,27 @@
+package aiframework.altimetrik;
+
+import java.io.*;
+
+public class FileWrite {
+	public static void main(String args[]) {
+		FileWrite fw = new FileWrite();
+		fw.createFile(
+				"altimetrikcreateseleniumfile.bat",
+				"echo \"Selenium Running\" > D:\\altimetrikdesktoptouch.txt");
+	}
+
+	public void createFile(String fileName, String contents) {
+		try 
+		{
+			// Create file
+			FileWriter fstream = new FileWriter(fileName);
+			BufferedWriter out = new BufferedWriter(fstream);
+			out.write(contents);
+			// Close the output stream
+			out.close();
+		} 
+		catch (Exception e) {// Catch exception if any
+			System.err.println("Error: " + e.getMessage());
+		}
+	}
+}

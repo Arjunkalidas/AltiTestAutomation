@@ -1,0 +1,18 @@
+package aiframework.altimetrik;
+
+import java.util.Scanner;
+
+public class GrassHopper {
+	public static void main(String args[]) {
+		int p,q,x;
+		System.out.println("Enter the Length of the board");
+		Scanner in =new Scanner(System.in);
+		p=in.nextInt();
+		System.out.println("Enter the Width of the board");
+		q=in.nextInt();
+		System.out.println("p= "+p+" q ="+q);
+		System.out.println("Enter the Jump Length");
+		x=in.nextInt();
+		System.out.println("x= "+ x);
+	}
+}

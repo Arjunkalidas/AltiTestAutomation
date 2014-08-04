@@ -1,0 +1,248 @@
+package com.altifin.lab;
+
+import java.util.concurrent.TimeUnit;
+import java.util.Date;
+import java.util.HashMap;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.*;
+
+import static org.openqa.selenium.OutputType.*;
+
+public class OldBalanceEnquiry extends OldAlftiFinBase {
+	public static RemoteWebDriver driver;
+	static WebElement myDynamicWebElement;
+	public static JavascriptExecutor js = driver;
+	public static final String KEYBOARD_DONE = "UIATarget.localTarget().frontMostApp().keyboard().buttons()['Back'].tap();";
+	static OldBalanceEnquiry balanceEnquiry = new OldBalanceEnquiry();
+
+	public static void main(String[] args) {
+		balanceEnquiry.setUp().enterAgentID("101000040").enterPassword("7s5h86n0").clickLogin()
+				.selectBankingServices().checkTheBalance().clickContinue()
+				.clickContinue().enterCustomerID("50000191").clickDone().tapContinue()
+				.tapContinue().tapOk().selectAccount()
+				.confirmAccountInformation().printBalanceInformation()
+				.acceptAlert()
+				;
+		balanceEnquiry.tearDown();
+	}
+
+	public OldBalanceEnquiry  tearDown() {
+		driver.quit();
+		return this;
+		
+	}
+	
+	public OldBalanceEnquiry setUp() {
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("device", "Android");
+		capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+		capabilities.setCapability(CapabilityType.VERSION, "4.2");
+		capabilities.setCapability(CapabilityType.PLATFORM, "Mac");
+		capabilities.setCapability("app",
+				"/Users/kasim/Downloads/AltiFinFI.apk");
+		capabilities.setCapability("app-package", "com.altipay.fi.launcher");
+		capabilities.setCapability("app-activity", ".AltipayFIActivity");
+
+		try {
+
+			driver = new RemoteWebDriver(new URL(
+					"http://192.168.70.70:4725/wd/hub"), capabilities);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		return this;
+	}
+
+	public OldBalanceEnquiry acceptAlert() {
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+			{
+				put("tapCount", 1D);
+				put("touchCount", 1D);
+				put("duration", 0.5);
+				put("x", 423D);
+				put("y", 526D);
+			}
+		});
+		return this;
+	}
+
+	public OldBalanceEnquiry printBalanceInformation() {
+		driver.findElement(
+				By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.Button[1]"))
+				.click();
+		return this;
+	}
+
+	public OldBalanceEnquiry confirmAccountInformation() {
+		driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+			{
+				put("tapCount", 1D);
+				put("touchCount", 1D);
+				put("duration", 0.5);
+				put("x", 463D);
+				put("y", 325D);
+			}
+		});
+		return this;
+	}
+
+	public OldBalanceEnquiry selectAccount() {
+		myDynamicWebElement = (new WebDriverWait(driver, 100))
+				.until(ExpectedConditions.visibilityOfElementLocated(By
+						.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")));
+//		Thread.sleep(10000);
+		driver.findElement(
+				By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]"))
+				.click();
+		return this;
+	}
+
+	public OldBalanceEnquiry tapOk() {    
+//		 myDynamicWebElement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")));
+	try {
+	Thread.sleep(10000);
+	} catch (InterruptedException e1) {
+	// TODO Auto-generated catch block
+	e1.printStackTrace();
+	}
+//		 driver.switchTo().alert().accept();
+	driver.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1D); put("touchCount", 1D); put("duration", 0.5); put("x", 469D); put("y", 349D); }});
+//	driver.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1D); put("touchCount", 1D); put("duration", 0.5); put("x", 469D); put("y", 349D); }});
+//	driver.findElement(By.xpath("//android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.TableLayout[1]/android.widget.TableRow[1]/android.widget.Button[1]")).click();
+//		 try {
+//		 Thread.sleep(10000);
+//		 } catch (InterruptedException e) {
+//		 // TODO Auto-generated catch block
+//		 e.printStackTrace();
+//		 }
+	return this;
+	}
+
+
+	public OldBalanceEnquiry tapContinue() {
+//		myDynamicWebElement = (new WebDriverWait(driver, 100))
+//				.until(ExpectedConditions.visibilityOfElementLocated(By
+//						.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.Button[1]")));
+		driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+			{
+				put("tapCount", 1D);
+				put("touchCount", 1D);
+				put("duration", 0.5);
+				put("x", 515D);
+				put("y", 275D);
+			}
+		});
+		return this;
+	}
+
+	public OldBalanceEnquiry clickDone() {
+		driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+			{
+				put("tapCount", 1D);
+				put("touchCount", 1D);
+				put("duration", 0.5);
+				put("x", 870D);
+				put("y", 398D);
+			}
+		});
+		return this;
+	}
+
+
+	public OldBalanceEnquiry enterCustomerID(String customerID) {
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.EditText[1]")).sendKeys(customerID);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		clickDone()
+		.tapContinue()
+		.tapContinue()
+		.tapOk();
+		return this;
+	}
+
+	public OldBalanceEnquiry clickContinue() {
+		driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+			{
+				put("tapCount", 1D);
+				put("touchCount", 1D);
+				put("duration", 0.5);
+				put("x", 521D);
+				put("y", 509D);
+			}
+		});
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return this;
+	}
+
+	public OldBalanceEnquiry checkTheBalance() {
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.TabHost[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.GridView[1]/android.widget.RelativeLayout[4]/android.widget.LinearLayout[1]/android.widget.ImageView[1]")).click();
+		myDynamicWebElement = (new WebDriverWait(driver, 100)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.Button[1]")));
+		clickContinue().clickContinue();
+		return this;
+	}
+
+	public OldBalanceEnquiry selectBankingServices() {
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.TabHost[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TabWidget[1]/android.widget.RelativeLayout[2]/android.widget.ImageView[1]")).click();
+		return this;
+	}
+
+	public OldBalanceEnquiry clickLogin() {
+		myDynamicWebElement = (new WebDriverWait(driver, 100)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[2]/android.widget.Button[1]")));
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[2]/android.widget.Button[1]")).click();
+		return this;
+	}
+
+	public OldBalanceEnquiry enterPassword(String password) {
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[2]/android.widget.EditText[2]")).sendKeys(password);
+		return this;
+	}
+
+	public OldBalanceEnquiry enterAgentID(String agentID) {
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[2]/android.widget.EditText[1]")).sendKeys(agentID);
+		return this;
+	}
+	public OldBalanceEnquiry loginToAltifinFI(String agentID, String password) {
+		balanceEnquiry
+			.enterAgentID(agentID)
+			.enterPassword(password)
+			.clickLogin();
+		return this;
+	}
+	
+	
+}

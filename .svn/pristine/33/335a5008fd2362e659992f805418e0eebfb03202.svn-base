@@ -1,0 +1,59 @@
+package com.EriBank;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import aiframework.core.utils.TestBase;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
+
+public class EriBankAndroid extends TestBase{
+	public static void main(String[] args) {
+		
+		String appiumVersion = "1.0";
+		String platformName = "Android";
+		String platformVersion = "4.3";
+		String deviceName = "Nexus 5";
+		String activityName = ".LoginActivity";
+		String packageName = "com.experitest.ExperiBank";
+		String applicationPath = "/Users/Sbhushan/Downloads/EriBank.apk";
+
+		TestBase eriBankAndroid= new EriBankAndroid();
+		
+		eriBankAndroid
+				.appiumVersion( appiumVersion)
+				.platformName(platformName)
+				.platformVersion(platformVersion)
+				.deviceName(deviceName)
+				.applicationPath(applicationPath)
+				.packageName(packageName)
+				.activityName(activityName)
+				.createRemoteWebDriver("localhost", "4756")
+				.timeOut(60);
+		
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.EditText[1]")).sendKeys("company");
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.EditText[1]")).sendKeys("company");
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.Button[1]")).click();
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.Button[1]")).click();
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.EditText[1]")).sendKeys("8446216055");
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.EditText[1]")).sendKeys("Muhammad Kasim");
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[3]/android.widget.SeekBar[1]")).click();
+		driver.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1D); put("touchCount", 1D); put("duration", 0.5); put("x", 401D); put("y", 520D); }});
+//		driver.executeScript("mobile: swipe", new HashMap<String, Double>() {{ put("touchCount", 1D); put("startX", 522D); put("startY", 523D); put("endX", 287D); put("endY", 506D); put("duration", 0.5); }});
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[4]/android.widget.EditText[1]")).sendKeys("India");
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[4]/android.widget.Button[1]")).click();
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.ListView[1]/android.widget.TextView[1]")).click();
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.Button[1]")).click();
+//		driver.findElement(By.xpath("//android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[3]/android.widget.LinearLayout[1]/android.widget.Button[1]")).click();
+//		driver.findElement(By.xpath("//android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[3]/android.widget.LinearLayout[1]/android.widget.Button[1]")).click();
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.Button[2]")).click();
+		driver.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1D); put("touchCount", 1D); put("duration", 0.5); put("x", 237D); put("y", 736D); }});
+		driver.quit();
+	}
+}

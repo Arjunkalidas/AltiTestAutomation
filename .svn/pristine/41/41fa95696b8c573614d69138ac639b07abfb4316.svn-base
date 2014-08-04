@@ -1,0 +1,142 @@
+package aiframework.altimetrik;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+
+import com.thoughtworks.selenium.Selenium;
+
+public class AltimetrikBase {
+
+	WebElement myDynamicWebElement;
+	static ReadPropertiesFile properties = new ReadPropertiesFile();
+	static String fileName = "altimetrik.ini";
+	String message = properties.getProperty(fileName, "message");
+	String username = properties.getProperty(fileName, "user_name");
+	String recipients = properties.getProperty(fileName, "recipients")+","+properties.getProperty(fileName, "recipients_sup");
+	String smtp_server = properties.getProperty(fileName, "smtp_server");
+	String smtp_port = properties.getProperty(fileName, "smtp_port");
+	String smtp_password = properties.getProperty(fileName, "smtp_password");
+	String loginPageLoadMessage = properties.getProperty(fileName, "loginPageLoadMessage");
+	String loginFailureMessage = properties.getProperty(fileName, "loginFailureMessage");
+	String unableLoadthePage = properties.getProperty(fileName, "unableLoadthePage");
+	String unableLoadtheDocument = properties.getProperty(fileName, "unableLoadtheDocument");
+	String wrongPageLoaded = properties.getProperty(fileName, "wrongPageLoaded");
+	String recipients_sup = properties.getProperty(fileName, "recipients_sup");
+	String altimetrik_url = properties.getProperty(fileName, "altimetrik_url");          
+	String altimetrik_browser = properties.getProperty(fileName, "altimetrik_browser");
+	String altimetrik_login = properties.getProperty(fileName, "altimetrik_login");
+	String altimetrik_password = properties.getProperty(fileName, "altimetrik_password");
+	static String address = properties.getProperty(fileName, "address");
+	static String city = properties.getProperty(fileName, "city");
+	static String zip = properties.getProperty(fileName, "zip");
+	static String plusfour = properties.getProperty(fileName, "plusfour");
+	static String amount = properties.getProperty(fileName, "amount");
+	static String date = properties.getProperty(fileName, "date");
+	static String taxRate = properties.getProperty(fileName, "taxRate");
+	static String pageTitle=properties.getProperty(fileName, "pageTitle");
+	static String incorrectCalculation=properties.getProperty(fileName, "incorrectCalculation");
+	WebDriver driver;
+	static Selenium selenium;
+	Mail mail = new Mail();
+	boolean flag;
+
+	protected WebDriver getBrowser(String browserName) {
+		if(browserName.equalsIgnoreCase("CHROME")){
+	    	System.setProperty("webdriver.chrome.driver", "browserDrivers\\chromedriver.exe");
+	        return new ChromeDriver();
+		}
+		else if(browserName.equalsIgnoreCase("IE")){
+	    	System.setProperty("webdriver.ie.driver", "browserDrivers\\IEDriverServer.exe");
+	        return new InternetExplorerDriver();
+		}
+	    return new FirefoxDriver();
+	}
+
+	public AltimetrikBase() {
+		super();
+	}
+
+	public void Login1Test() throws Exception {
+			try {
+				String Title = "altimetrik - Login Page";
+				boolean loginStatus = false;
+				boolean pageLoadStatus = false;
+				selenium.open(altimetrik_url);
+				if (sleepMethod(Title)) {
+	
+					selenium.type("id=username", altimetrik_login);
+					selenium.type("id=password", altimetrik_password);
+	
+					selenium.click("css=img[alt=\"Submit\"]");
+					Title = "Zyme Analysis Portal";
+	
+					int i = 0;
+					while (i < 30 && !selenium.isTextPresent("Login Failed")) {
+						if (selenium.isTextPresent("Last updated")
+								&& selenium.isTextPresent("Logout")
+								&& selenium.isTextPresent("altimetrik_Login_Stats.qvw")) {
+							break;
+						}
+	
+						else {
+							Thread.sleep(1000);
+							i = i + 1;
+							loginStatus = selenium.isTextPresent("Login Failed");
+						}
+						pageLoadStatus = selenium.isTextPresent("Last updated");
+					}
+					if (loginStatus) {
+						mail.mailSend(new String[] { loginFailureMessage, "subject",
+								username, recipients, smtp_server, smtp_port,
+								smtp_password });
+					} else if (!pageLoadStatus) {
+						mail.mailSend(new String[] { unableLoadthePage,
+								"subject", username, recipients, smtp_server,
+								smtp_port, smtp_password });
+					}
+				} else {
+					mail.mailSend(new String[] { loginPageLoadMessage, "subject",
+							username, recipients, smtp_server, smtp_port,
+							smtp_password });
+				}
+			} catch (Exception e) {
+				mail.mailSend(new String[] { unableLoadtheDocument, "subject",
+						username, recipients, smtp_server, smtp_port, smtp_password });
+			}
+			finally
+			{
+				FileWrite fw = new FileWrite();
+				fw.createFile("altimetrikcreateseleniumfile.bat",
+						"echo \"Selenium Running\" > D:\\altimetrik_seleninum\\altimetrikdesktoptouch.txt");
+			}
+			
+		}
+
+	private boolean sleepMethod(String Title) throws InterruptedException {
+			int i = 0;
+			boolean flag = false;
+			while (i < 30) {
+				if (selenium.getTitle().equalsIgnoreCase(Title)) {
+					flag = true;
+					break;
+				} else {
+					Thread.sleep(1000);
+				}
+				i = i + 1;
+			}
+			return flag;
+		}
+}

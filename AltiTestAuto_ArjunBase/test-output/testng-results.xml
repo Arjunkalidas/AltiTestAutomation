@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[<a href='/Users/arjun/sandbox/AltiTestAuto_ArjunBase/Snapshot_2014_Jul_31 19_35_05/screenshot1406815543529.jpg'> <img src='/Users/arjun/sandbox/AltiTestAuto_ArjunBase/Snapshot_2014_Jul_31 19_35_05/screenshot1406815543529.jpg height='100' width='100'/> </a>]]>
+    </line>
+    <line>
+      <![CDATA[<a href='/Users/arjun/sandbox/AltiTestAuto_ArjunBase/Snapshot_2014_Jul_31 19_35_05/screenshot1406815548602.jpg'> <img src='/Users/arjun/sandbox/AltiTestAuto_ArjunBase/Snapshot_2014_Jul_31 19_35_05/screenshot1406815548602.jpg height='100' width='100'/> </a>]]>
+    </line>
+    <line>
+      <![CDATA[<a href='/Users/arjun/sandbox/AltiTestAuto_ArjunBase/Snapshot_2014_Jul_31 19_35_05/screenshot1406815550300.jpg'> <img src='/Users/arjun/sandbox/AltiTestAuto_ArjunBase/Snapshot_2014_Jul_31 19_35_05/screenshot1406815550300.jpg height='100' width='100'/> </a>]]>
+    </line>
+    <line>
+      <![CDATA[<a href='/Users/arjun/sandbox/AltiTestAuto_ArjunBase/Snapshot_2014_Jul_31 19_35_05/screenshot1406815551207.jpg'> <img src='/Users/arjun/sandbox/AltiTestAuto_ArjunBase/Snapshot_2014_Jul_31 19_35_05/screenshot1406815551207.jpg height='100' width='100'/> </a>]]>
+    </line>
+    <line>
+      <![CDATA[<a href='/Users/arjun/sandbox/AltiTestAuto_ArjunBase/Snapshot_2014_Jul_31 19_35_05/screenshot1406815576993.jpg'> <img src='/Users/arjun/sandbox/AltiTestAuto_ArjunBase/Snapshot_2014_Jul_31 19_35_05/screenshot1406815576993.jpg height='100' width='100'/> </a>]]>
+    </line>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="36032" started-at="2014-07-31T14:05:40Z" finished-at="2014-07-31T14:06:16Z">
+    <groups>
+      <group name="usabilitytest">
+        <method signature="TestIcici.testThree()[pri:0, instance:com.icici.automation.TestIcici@7c0e2abd]" name="testThree" class="com.icici.automation.TestIcici"/>
+      </group> <!-- usabilitytest -->
+    </groups>
+    <test name="Default test" duration-ms="36032" started-at="2014-07-31T14:05:40Z" finished-at="2014-07-31T14:06:16Z">
+      <class name="com.icici.automation.TestIcici">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.icici.automation.TestIcici@7c0e2abd]" name="setUp" is-config="true" duration-ms="35559" started-at="2014-07-31T19:35:05Z" finished-at="2014-07-31T19:35:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="testThree()[pri:0, instance:com.icici.automation.TestIcici@7c0e2abd]" name="testThree" duration-ms="36023" started-at="2014-07-31T19:35:40Z" finished-at="2014-07-31T19:36:16Z">
+          <reporter-output>
+            <line>
+              <![CDATA[<a href='/Users/arjun/sandbox/AltiTestAuto_ArjunBase/Snapshot_2014_Jul_31 19_35_05/screenshot1406815543529.jpg'> <img src='/Users/arjun/sandbox/AltiTestAuto_ArjunBase/Snapshot_2014_Jul_31 19_35_05/screenshot1406815543529.jpg height='100' width='100'/> </a>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- testThree -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.icici.automation.TestIcici@7c0e2abd]" name="tearDown" is-config="true" duration-ms="1077" started-at="2014-07-31T19:36:17Z" finished-at="2014-07-31T19:36:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.icici.automation.TestIcici -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

@@ -1,0 +1,9 @@
+package com.test.eribank;
+
+public class EriBankAndroid {
+
+	public static void main(String[] args) {
+
+	}
+
+}

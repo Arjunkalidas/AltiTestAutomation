@@ -1,0 +1,6 @@
+package aiframework.core.utils;
+
+public enum IOSDEVICES {
+
+	iPhone,iPAD
+}

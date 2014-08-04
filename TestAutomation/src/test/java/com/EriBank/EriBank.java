@@ -1,0 +1,156 @@
+package com.EriBank;
+
+import java.util.HashMap;
+
+import aiframework.core.utils.TestBase;
+
+public class EriBank extends TestBase {
+	
+	public static EriBank eriBank = new EriBank();
+//	public static String platformVersion = "6.1";
+//	public static String deviceName = "iPhone";
+//	public static String bundleId = "com.altimetrik.concost";
+//	public static String udId = "73827f2fc1166180febef8904b0ca05e49ad7125";
+
+	public static void main(String[] args) {
+		 platformName = "iOS";
+		 eriBank
+		.appiumVersion(appiumVersion)
+		.platformName(platformName)
+		.identifyPlatform()
+		.platformVersion(platformVersion)
+		.deviceName(deviceName)
+		.bundleId(bundleId)
+		.udId(udId)
+		.createRemoteWebDriver("localhost", "4723")
+		.timeOut(60);
+
+		/*eriBank
+			.appiumVersion( appiumVersion)
+			.platformName(platformName)
+			.identifyPlatform()		
+			.platformVersion(platformVersion)
+			.deviceName(deviceName)
+			.applicationPath(applicationPath)
+			.packageName(packageName)
+			.activityName(activityName)
+			.createRemoteWebDriver("localhost", "4725")
+			.timeOut(60);*/
+
+		eriBank
+		.enterUserName("company")
+		.enterPassword("company")
+		.submitCredentials()
+		.makePayment()
+		.enterPhone("8446216055")
+		.enterName("Muhammad Kasim")
+		.enterAmount()
+		.enterCountry("India")
+		.searchCountry()
+		.selectCountry()
+		.sendPayment()
+		.confirmPayment()
+		.logout();
+
+		eriBank.tearDown();
+	}
+
+	public EriBank submitCredentials() {
+		//driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.Button[1]")).click();
+		universalElement("submitCredentials").click();
+		return this;
+	}
+
+	public EriBank  enterPassword(String password) {
+		//driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]")).sendKeys("company");
+		//unversalElement("password").click();
+		universalElement("password").sendKeys(password);
+		return this;
+	}
+
+	public EriBank enterUserName(String userName) {
+		//driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.EditText[1]")).sendKeys("company");
+		//unversalElement("userName").click();
+		universalElement("userName").sendKeys(userName);
+		return this;
+	}
+
+	public EriBank  enterAmount() {
+		//driver.executeScript("mobile: swipe", new HashMap<String, Double>() {{ put("touchCount", 1D); put("startX", 286D); put("startY", 532D); put("endX", 446D); put("endY", 532D); put("duration", 0.5); }});
+		if(platformName.equals("Android"))
+		{
+			driver.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1D); put("touchCount", 1D); put("duration", 0.5); put("x", 401D); put("y", 520D); }});
+		}
+		else
+		{
+			driver.executeScript("mobile: swipe", new HashMap<String, Double>() {{ put("touchCount", 1D); put("startX", 129D); put("startY", 200D); put("endX", 202D); put("endY", 202D); put("duration", 0.5); }});
+		}
+		return this;
+	}
+
+	public EriBank  logout() {
+		//driver.findElement(By.name("logoutButton")).click();
+		universalElement("logout").click();;
+		return this;
+	}
+
+	public EriBank  confirmPayment() {
+		//driver.findElement(By.name("Yes")).click();
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		if(platformName.equals("Android"))
+		{
+			driver.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1D); put("touchCount", 1D); put("duration", 0.5); put("x", 242D); put("y", 738D); }});  
+		}
+		else
+		{
+			universalElement("confirmPayment").click();;
+		}
+		return this;
+	}
+
+	public EriBank  sendPayment() {
+		//driver.findElement(By.name("sendPaymentButton")).click();
+		universalElement("sendPaymentButton").click();;
+		return this;
+	}
+
+	public EriBank  selectCountry() {
+		//driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]")).click();
+		universalElement("countryDropDown").click();;
+		return this;
+	}
+
+	public EriBank  searchCountry() {
+		//driver.findElement(By.name("countryButton")).click();
+		universalElement("countryButton").click();;
+		return this;
+	}
+
+	public EriBank  enterCountry(String country) {
+		//driver.findElement(By.name("countryTextField")).sendKeys("India");
+		universalElement("countryText").sendKeys(country);;
+		return this;
+	}
+
+	public EriBank  enterName(String name) {
+		//driver.findElement(By.name("nameTextField")).sendKeys("Muhammad Kasim");
+		universalElement("name").sendKeys(name);;
+		return this;
+	}
+
+	public EriBank  enterPhone(String phoneNumber) {
+		//driver.findElement(By.name("phoneTextField")).sendKeys("8446216055");
+		universalElement("phone").sendKeys(phoneNumber);;
+		return this;
+	}
+
+	public EriBank  makePayment() {
+		//driver.findElement(By.name("makePaymentButton")).click();
+		universalElement("makePaymentButton").click();;
+		return this;
+	}
+}

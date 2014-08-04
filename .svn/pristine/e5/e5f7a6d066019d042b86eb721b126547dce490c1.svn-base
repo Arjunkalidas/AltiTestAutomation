@@ -1,0 +1,5 @@
+package aiframework.altimetrik;
+
+public enum Gender {
+MALE,FEMALE
+}

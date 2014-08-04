@@ -1,0 +1,44 @@
+package com.altifin.FI;
+public class TestClass {
+	static abstract class KasimBase <T extends KasimBase<T>> {
+		public void baseLogin(){
+			System.out.println("logged in");
+			//return this;
+		}
+	    protected abstract T getThis();
+	}
+	
+	static class CashDeposit extends KasimBase<CashDeposit> {
+	    @Override protected CashDeposit getThis() { return this; }
+	    public CashDeposit depositCash() {
+	      System.out.println("Cash Deposited!");
+	      return getThis();
+	    }
+	    public CashDeposit login(){
+			super.baseLogin();
+			return this;
+		}
+	}
+	
+	static class BalanceEnquiry extends KasimBase<BalanceEnquiry> {
+		@Override protected BalanceEnquiry getThis() { return this; }
+		public BalanceEnquiry queryBalance(){
+			System.out.println("Balance Queried");
+			return getThis();
+		}
+		public BalanceEnquiry login(){
+			super.baseLogin();
+			return this;
+		}
+	}
+
+
+  public static void main(String[] args) {
+	  BalanceEnquiry balanceEnquiry = new BalanceEnquiry();
+	  balanceEnquiry.login().queryBalance();
+	  balanceEnquiry.queryBalance(); 
+	  CashDeposit cashDeposit = new CashDeposit();
+	  cashDeposit.login().depositCash();
+
+  }
+}

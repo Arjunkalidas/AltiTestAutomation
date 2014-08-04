@@ -1,0 +1,5 @@
+package aiframework.core.utils;
+
+public enum ANDROIDDEVICES {
+
+}

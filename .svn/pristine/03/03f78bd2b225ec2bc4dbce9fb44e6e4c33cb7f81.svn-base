@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite" duration-ms="98439" started-at="2014-06-16T11:40:02Z" finished-at="2014-06-16T11:41:40Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="98439" started-at="2014-06-16T11:40:02Z" finished-at="2014-06-16T11:41:40Z">
+      <class name="com.altifin.FI.TestBalanceEnquiry">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.altifin.FI.TestBalanceEnquiry@531be3c5]" name="setUp" is-config="true" duration-ms="32295" started-at="2014-06-16T17:09:29Z" finished-at="2014-06-16T17:10:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="balanceEnquiryTest(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.altifin.FI.TestBalanceEnquiry@531be3c5]" name="balanceEnquiryTest" duration-ms="98370" started-at="2014-06-16T17:10:02Z" data-provider="BalanceEnquiryDataProvider" finished-at="2014-06-16T17:11:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[101000040]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[7s5h86n0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[50000191]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- balanceEnquiryTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.altifin.FI.TestBalanceEnquiry@531be3c5]" name="tearDown" is-config="true" duration-ms="1488" started-at="2014-06-16T17:11:40Z" finished-at="2014-06-16T17:11:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.altifin.FI.TestBalanceEnquiry -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>

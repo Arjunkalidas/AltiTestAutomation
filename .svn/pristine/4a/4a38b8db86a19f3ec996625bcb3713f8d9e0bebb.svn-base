@@ -1,0 +1,116 @@
+package com.altifin.FI;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+public class OldCashDeposit extends OldAlftiFinBase{
+
+	public static RemoteWebDriver driver;
+	public static WebElement myDynamicElement;
+	public static JavascriptExecutor js = driver;
+
+	public static void main(String[] args) {
+
+		/*// login ID
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/a"
+				+ "android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/"
+				+ "android.widget.RelativeLayout[2]/android.widget.EditText[1]")).sendKeys("101000042");
+		// precise tap - on Next button
+		js.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1.0); 
+		put("touchCount", 1.0); put("duration", 0.5); put("x", 951.0); put("y", 395.0); }});
+		// Password
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/"
+				+ "android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/"
+				+ "android.widget.RelativeLayout[2]/android.widget.EditText[2]")).sendKeys("2H44RY0H");
+		// precise tap - on Done button
+		js.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1.0); 
+		put("touchCount", 1.0); put("duration", 0.5); put("x", 963.0); put("y", 393.0); }});
+		// tap on "Login" button
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/"
+				+ "android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/"
+				+ "android.widget.RelativeLayout[2]/android.widget.Button[1]")).click();
+		// click Banking services
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/"
+				+ "android.widget.RelativeLayout[1]/android.widget.TabHost[1]/android.widget.LinearLayout[1]/"
+				+ "android.widget.LinearLayout[1]/android.widget.TabWidget[1]/android.widget.RelativeLayout[2]/"
+				+ "android.widget.TextView[1]")).click();*/
+/*// Customer ID text
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/"
+				+ "android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/"
+				+ "android.widget.EditText[1]")).sendKeys("50000187");*/
+
+/*// precise tap on Done button
+		js.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1.0); 
+		put("touchCount", 1.0); put("duration", 0.5); put("x", 871.0); put("y", 393.0); }});
+		// precise tap on continue button
+		js.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1.0); put("touchCount", 1.0); 
+		put("duration", 0.5); put("x", 505.0); put("y", 269.0); }});
+		// FP Alert press OK
+		js.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1.0); 
+		put("touchCount", 1.0); put("duration", 0.5); put("x", 457.0); put("y", 347.0); }});*/
+
+//*****************************************************
+
+
+/*// precise tap - continue
+		js.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1.0); 
+		put("touchCount", 1.0); put("duration", 0.5); put("x", 506.0); put("y", 512.0); }});
+		// customer ID - sendkeys
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/"
+				+ "android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/"
+				+ "android.widget.EditText[1]")).sendKeys("50000191");
+		// precise tap - Done button on keypad
+		js.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1.0); 
+		put("touchCount", 1.0); put("duration", 0.5); put("x", 868.0); put("y", 395.0); }});
+		// precise tap - continue button
+		js.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1.0); 
+		put("touchCount", 1.0); put("duration", 0.5); put("x", 521.0); put("y", 274.0); }});
+		// precise tap - on Alert "Ok" button.
+		js.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1.0); 
+		put("touchCount", 1.0); put("duration", 0.5); put("x", 521.0); put("y", 274.0); }});*/
+//*****************************************************
+/*// selecting an account
+		driver.findElement(By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/"
+				+ "android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/"
+				+ "android.widget.ListView[1]/android.widget.RelativeLayout[1]")).click();
+		// accept the alert - precise tap
+		js.executeScript("mobile: tap", new HashMap<String, Double>() {{ put("tapCount", 1.0); 
+		put("touchCount", 1.0); put("duration", 0.5); put("x", 464.0); put("y", 323.0); }});*/
+
+
+/*// tap on the ok button of alert
+driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+	{
+		put("tapCount", 1D);
+		put("touchCount", 1D);
+		put("duration", 0.5);
+		put("x", 470D);
+		put("y", 515D);
+	}
+});
+// tap on the Verify button for finger print
+driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+	{
+		put("tapCount", 1D);
+		put("touchCount", 1D);
+		put("duration", 0.5);
+		put("x", 420D);
+		put("y", 539D);
+	}
+});
+// tap on the Print button
+driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+	{
+		put("tapCount", 1D);
+		put("touchCount", 1D);
+		put("duration", 0.5);
+		put("x", 503D);
+		put("y", 333D);
+	}
+});
+
+driver.quit();
+*/
+	}
+}

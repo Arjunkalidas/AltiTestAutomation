@@ -1,0 +1,23 @@
+package aiframework.altimetrik;
+
+import java.io.*;
+import java.util.*;
+
+public class ReadPropertiesFile {
+        public static void main(String[] args) {
+        	ReadPropertiesFile rpf= new ReadPropertiesFile(); 
+        	String propertyValue=rpf.getProperty("altimetrik.ini","altimetrik_url");
+        }
+
+		public  String getProperty(String fileName,String propertyName) {
+			Properties prop = new Properties();
+			String propertyValue = null;
+			try {
+			        prop.load(new FileInputStream(fileName));
+			        propertyValue= prop.getProperty(propertyName);
+//			        System.out.println(propertyValue);
+			} catch (Exception e) {
+			}
+			return propertyValue;
+		}
+}

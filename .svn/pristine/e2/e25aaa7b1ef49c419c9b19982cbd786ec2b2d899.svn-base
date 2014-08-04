@@ -1,0 +1,195 @@
+package com.altifin.FI;
+
+import java.util.HashMap;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.*;
+
+//public class BalanceEnquiry extends AlftiFinBase<BalanceEnquiry> {
+	 public class BalanceEnquiry extends AlftiFinBase{
+	static WebElement myDynamicWebElement;
+	public static final String KEYBOARD_DONE = "UIATarget.localTarget().frontMostApp().keyboard().buttons()['Back'].tap();";
+	static BalanceEnquiry balanceEnquiry = new BalanceEnquiry();
+
+	protected BalanceEnquiry getThis() {
+		return this;
+	}
+
+	public static void main(String[] args) {
+		balanceEnquiry.setUp("/Users/kasim/Downloads/AltiFinFI.apk", "localhost", "4756", "Android", "", "4.2", "","Mac", "com.altipay.fi.launcher", ".AltipayFIActivity","").loginToAltifinFI(agentID, password)
+				.selectBankingServices().checkTheBalance().clickContinue()
+				.enterCustomerID(customerID).clickDone().tapContinue()
+				.tapContinue().tapOk().selectAccount()
+				.confirmAccountInformation().printBalanceInformation()
+				.acceptAlert().tearDown();
+	}
+
+	public BalanceEnquiry setUp(String application, String host, String port, String deviceType, String browserType, String platFormVersion, String deviceName,String platformType, String packageName, String activityName,String udId) {
+		super.setUp(application, host, port, deviceType, browserType, platFormVersion, deviceName,platformType, packageName, activityName,"");
+		return this;
+	}
+
+	public BalanceEnquiry selectBankingServices() {
+		super.selectBankingServices();
+		return this;
+	}
+
+	public BalanceEnquiry loginToAltifinFI(String agentID, String password) {
+		super.loginToAltifinFI(agentID, password);
+		return this;
+	}
+
+	public BalanceEnquiry selectAccount() {
+		super.selectAccount();
+		return this;
+	}
+
+	public BalanceEnquiry printBalanceInformation() {
+		super.printBalanceInformation();
+		return this;
+	}
+
+	public BalanceEnquiry acceptAlert() {
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
+
+		driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+			{
+				put("tapCount", 1D);
+				put("touchCount", 1D);
+				put("duration", 0.5);
+				put("x", 423D);
+				put("y", 526D);
+			}
+		});
+		return this;
+	}
+
+	public BalanceEnquiry confirmAccountInformation() {
+		super.confirmAccountInformation();
+		return this;
+	}
+
+	public BalanceEnquiry tapOk() {
+		// myDynamicWebElement = (new WebDriverWait(driver,
+		// 10)).until(ExpectedConditions.visibilityOfElementLocated
+		// (By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.ListView[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]")));
+
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+		}
+
+		driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+			{
+				put("tapCount", 1D);
+				put("touchCount", 1D);
+				put("duration", 0.5);
+				put("x", 469D);
+				put("y", 349D);
+			}
+		});
+
+		/*
+		 * driver.executeScript("mobile: tap", new HashMap<String, Double>() {{
+		 * put("tapCount", 1D); put("touchCount", 1D); put("duration", 0.5);
+		 * put("x", 469D); put("y", 349D); }}); driver.findElement(By.xpath(
+		 * "//android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/
+		 * android
+		 * .widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android
+		 * .widget.TableLayout[1]/
+		 * android.widget.TableRow[1]/android.widget.Button[1]")).click(); try {
+		 * Thread.sleep(10000); } catch (InterruptedException e) { // TODO
+		 * Auto-generated catch block e.printStackTrace(); }
+		 */
+		return this;
+	}
+
+	public BalanceEnquiry tapContinue() {
+		/*
+		 * myDynamicWebElement = (new WebDriverWait(driver, 100))
+		 * .until(ExpectedConditions.visibilityOfElementLocated(By
+		 * .xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/
+		 * android
+		 * .widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android
+		 * .widget.Button[1]")));
+		 */
+		driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+			{
+				put("tapCount", 1D);
+				put("touchCount", 1D);
+				put("duration", 0.5);
+				put("x", 515D);
+				put("y", 275D);
+			}
+		});
+		return this;
+	}
+
+	public BalanceEnquiry clickDone() {
+		driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+			{
+				put("tapCount", 1D);
+				put("touchCount", 1D);
+				put("duration", 0.5);
+				put("x", 870D);
+				put("y", 398D);
+			}
+		});
+		return this;
+	}
+
+	public BalanceEnquiry enterCustomerID(String customerID) {
+		driver.findElement(
+				By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/"
+						+ "android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]/"
+						+ "android.widget.EditText[1]")).sendKeys(customerID);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		clickDone().tapContinue().tapContinue().tapOk();
+		return this;
+	}
+
+	public BalanceEnquiry clickContinue() {
+		driver.executeScript("mobile: tap", new HashMap<String, Double>() {
+			{
+				put("tapCount", 1D);
+				put("touchCount", 1D);
+				put("duration", 0.5);
+				put("x", 521D);
+				put("y", 509D);
+			}
+		});
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return this;
+	}
+
+	public BalanceEnquiry checkTheBalance() {
+		driver.findElement(
+				By.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/"
+						+ "android.widget.RelativeLayout[1]/android.widget.TabHost[1]/android.widget.LinearLayout[1]/"
+						+ "android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/"
+						+ "android.widget.GridView[1]/android.widget.RelativeLayout[4]/android.widget.LinearLayout[1]/"
+						+ "android.widget.ImageView[1]")).click();
+		myDynamicWebElement = (new WebDriverWait(driver, 100))
+				.until(ExpectedConditions.visibilityOfElementLocated(By
+						.xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/"
+								+ "android.widget.RelativeLayout[1]/android.widget.Button[1]")));
+		clickContinue().clickContinue();
+		return this;
+	}
+
+}
