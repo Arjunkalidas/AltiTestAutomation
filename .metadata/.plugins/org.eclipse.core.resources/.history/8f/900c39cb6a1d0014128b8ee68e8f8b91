@@ -1,0 +1,62 @@
+package com.altimetrik.wallet;
+
+import java.util.HashMap;
+
+import org.openqa.selenium.By;
+
+import featdsl.core.utils.TestBase;
+
+public class AltiFinWallet extends TestBase{
+	
+	public static void main(String[] args) {
+		
+			
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).sendKeys("Altimetrik");
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIASecureTextField[1]")).sendKeys("1234");
+			driver.findElement(By.name("Login")).click();
+			driver.findElement(By.name("OK")).click();
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).sendKeys("altimetrik");
+			driver.findElement(By.name("Login")).click();
+			driver.findElement(By.name("Add Payee")).click();
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).sendKeys("Arjun Kalidas");
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[2]")).sendKeys("Arjun");
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[3]")).sendKeys("03712040005667");
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[4]")).sendKeys("03712040005666");
+			driver.findElement(By.name("Register")).click();
+			driver.findElement(By.name("dictation")).click();
+			driver.findElement(By.name("Payee Name")).click();
+			driver.findElement(By.name("Register")).click();
+			driver.findElement(By.name("OK")).click();
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[4]")).sendKeys("03712040005667");
+			driver.findElement(By.name("Payee Name")).click();
+			driver.findElement(By.name("Register")).click();
+			driver.findElement(By.name("Submit")).click();
+			driver.findElement(By.name("1")).click();
+			driver.findElement(By.name("2")).click();
+			driver.findElement(By.name("3")).click();
+			driver.findElement(By.name("4")).click();
+			driver.findElement(By.name("Transfer")).click();
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).sendKeys("Anonymous");
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).click();
+			js.executeScript("mobile: swipe", new HashMap<String, Double>() {{ put("touchCount", 1D); put("startX", 158D); put("startY", 363D); put("endX", 165D); put("endY", 420D); put("duration", 0.5); }});
+			js.executeScript("mobile: swipe", new HashMap<String, Double>() {{ put("touchCount", 1D); put("startX", 155D); put("startY", 435D); put("endX", 155D); put("endY", 334D); put("duration", 0.5); }});
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[2]")).sendKeys("Pending Amt");
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[3]")).sendKeys("5000");
+			driver.findElement(By.name("Remark")).click();
+			driver.findElement(By.name("Submit")).click();
+			driver.findElement(By.name("Confirm")).click();
+			driver.findElement(By.name("1")).click();
+			driver.findElement(By.name("2")).click();
+			driver.findElement(By.name("3")).click();
+			driver.findElement(By.name("4")).click();
+			driver.findElement(By.name("Account Stmt.")).click();
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]")).click();
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]")).click();
+			driver.findElement(By.name("Menu")).click();
+			driver.findElement(By.name("Logout")).click();
+			driver.close();
+		}
+}
+
+
+

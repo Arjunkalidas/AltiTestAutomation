@@ -1,0 +1,8 @@
+default_implicitWait=60
+host=localhost
+port=4723
+deviceName=iphone
+platformVersion=7.1.1
+platformName=iOS
+appiumVersion=1.0
+applicationPath=

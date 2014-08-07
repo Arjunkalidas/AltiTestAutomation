@@ -1,0 +1,9 @@
+package com.altimetrik.wallet;
+
+public class AltiFinWallet {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

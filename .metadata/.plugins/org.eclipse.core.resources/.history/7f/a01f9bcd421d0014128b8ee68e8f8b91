@@ -1,0 +1,16 @@
+package featdsl.core.utils;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+public class TestBase {
+	
+	public static RemoteWebDriver driver;
+	public static JavascriptExecutor js = (JavascriptExecutor)driver;
+
+	public static void main(String[] args) {
+		
+	}
+
+}

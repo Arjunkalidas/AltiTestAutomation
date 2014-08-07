@@ -1,0 +1,103 @@
+package com.altimetrik.wallet;
+
+import java.util.HashMap;
+
+import org.openqa.selenium.By;
+
+import featdsl.core.utils.TestBase;
+
+public class AltiFinWallet extends TestBase{
+	
+	public static void main(String[] args) {
+		
+			
+			enterUsername();
+			enterPassword();
+			clickLogin();
+			acceptAlert();
+			addPayee();
+			acceptAlert();
+			enterPayeeDetails();
+			submitForm();
+			confirmPayeeByPin();
+			
+			fundTransfer();
+			
+			choosePayee();
+			enterRemark();
+			enterAmount();
+			driver.findElement(By.name("Remark")).click();
+			submitForm();
+			driver.findElement(By.name("Confirm")).click();
+			confirmPayeeByPin();
+			driver.findElement(By.name("Account Stmt.")).click();
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]")).click();
+			driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]")).click();
+			driver.findElement(By.name("Menu")).click();
+			driver.findElement(By.name("Logout")).click();
+			driver.close();
+		}
+
+	private static void enterAmount() {
+		
+	}
+
+	private static void enterRemark() {
+		
+	}
+
+	private static void choosePayee() {
+		
+	}
+
+	private static void fundTransfer() {
+		driver.findElement(By.name("Transfer")).click();
+		driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).click();
+		js.executeScript("mobile: swipe", new HashMap<String, Double>() {{ put("touchCount", 1D); put("startX", 155D); put("startY", 435D); put("endX", 155D); put("endY", 334D); put("duration", 0.5); }});
+		driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[2]")).sendKeys("Pending Amt");
+		driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[3]")).sendKeys("5000");
+	}
+
+	private static void confirmPayeeByPin() {
+		driver.findElement(By.name("1")).click();
+		driver.findElement(By.name("2")).click();
+		driver.findElement(By.name("3")).click();
+		driver.findElement(By.name("4")).click();
+	}
+
+	private static void submitForm() {
+		driver.findElement(By.name("Submit")).click();
+	}
+
+	private static void enterPayeeDetails() {
+		driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).sendKeys("Arjun Kalidas");
+		driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[2]")).sendKeys("Arjun");
+		driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[3]")).sendKeys("03712040005667");
+		driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[4]")).sendKeys("03712040005667");
+		driver.findElement(By.name("Payee Name")).click(); // to dismiss the keypad
+		driver.findElement(By.name("Register")).click();
+	}
+
+	private static void addPayee() {
+		driver.findElement(By.name("Add Payee")).click();
+	}
+
+	private static void acceptAlert() {
+		driver.findElement(By.name("OK")).click();
+	}
+
+	private static void clickLogin() {
+		driver.findElement(By.name("Login")).click();
+	}
+
+	private static void enterPassword() {
+		driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIASecureTextField[1]")).sendKeys("1234");
+	}
+
+	private static void enterUsername() {
+		driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).sendKeys("altimetrik");
+	}
+}
+
+
+

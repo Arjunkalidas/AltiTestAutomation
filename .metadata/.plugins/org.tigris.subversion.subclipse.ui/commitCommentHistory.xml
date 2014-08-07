@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CommitComments>	<CommitComment>Committing the uncommitted</CommitComment>
+<CommitComments>	<CommitComment>Updated and committed</CommitComment>
+	<CommitComment>files Clean up</CommitComment>
+	<CommitComment>Added a new AltiFin Wallet project</CommitComment>
+	<CommitComment>Committing the uncommitted</CommitComment>
 	<CommitComment>Commit performed for the first time after enabling chmod 744 permission.</CommitComment>
 	<CommitComment>New Sandbox copy. New SVN setup which is named as &quot;sandbox&quot; located in Users/arjun folder.
 All commit and update has to be done via terminal.</CommitComment>

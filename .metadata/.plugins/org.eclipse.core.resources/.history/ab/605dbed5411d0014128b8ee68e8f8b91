@@ -1,0 +1,67 @@
+package com.altimetrik.wallet;
+
+public class AltiFinWallet {
+
+	import io.appium.java_client.AppiumDriver;
+	import org.openqa.selenium.remote.DesiredCapabilities;
+	import java.net.URL;
+
+	public class {scriptName} {
+		public static void main(String[] args) {
+			DesiredCapabilities capabilities = new DesiredCapabilities();
+			capabilities.setCapability("appium-version", "1.0");
+			capabilities.setCapability("platformName", "iOS");
+			capabilities.setCapability("platformVersion", "7.1.1");
+			capabilities.setCapability("deviceName", "iPhone");
+			capabilities.setCapability("app", "/Users/arjun/Desktop/ExperiBank.app");
+			wd = new AppiumDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
+			wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).sendKeys("Altimetrik");
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIASecureTextField[1]")).sendKeys("1234");
+			wd.findElement(By.name("Login")).click();
+			wd.findElement(By.name("OK")).click();
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).sendKeys("altimetrik");
+			wd.findElement(By.name("Login")).click();
+			wd.findElement(By.name("Add Payee")).click();
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).sendKeys("Arjun Kalidas");
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[2]")).sendKeys("Arjun");
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[3]")).sendKeys("03712040005667");
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[4]")).sendKeys("03712040005666");
+			wd.findElement(By.name("Register")).click();
+			wd.findElement(By.name("dictation")).click();
+			wd.findElement(By.name("Payee Name")).click();
+			wd.findElement(By.name("Register")).click();
+			wd.findElement(By.name("OK")).click();
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[4]")).sendKeys("03712040005667");
+			wd.findElement(By.name("Payee Name")).click();
+			wd.findElement(By.name("Register")).click();
+			wd.findElement(By.name("Submit")).click();
+			wd.findElement(By.name("1")).click();
+			wd.findElement(By.name("2")).click();
+			wd.findElement(By.name("3")).click();
+			wd.findElement(By.name("4")).click();
+			wd.findElement(By.name("Transfer")).click();
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).sendKeys("Anonymous");
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]")).click();
+	(JavascriptExecutor)wd.executeScript("mobile: swipe", new HashMap<String, Double>() {{ put("touchCount", 1); put("startX", 158); put("startY", 363); put("endX", 165); put("endY", 420); put("duration", 0.5); }});
+	(JavascriptExecutor)wd.executeScript("mobile: swipe", new HashMap<String, Double>() {{ put("touchCount", 1); put("startX", 155); put("startY", 435); put("endX", 155); put("endY", 334); put("duration", 0.5); }});
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[2]")).sendKeys("Pending Amt");
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[3]")).sendKeys("5000");
+			wd.findElement(By.name("Remark")).click();
+			wd.findElement(By.name("Submit")).click();
+			wd.findElement(By.name("Confirm")).click();
+			wd.findElement(By.name("1")).click();
+			wd.findElement(By.name("2")).click();
+			wd.findElement(By.name("3")).click();
+			wd.findElement(By.name("4")).click();
+			wd.findElement(By.name("Account Stmt.")).click();
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]")).click();
+			wd.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]")).click();
+			wd.findElement(By.name("Menu")).click();
+			wd.findElement(By.name("Logout")).click();
+			wd.close();
+		}
+	}
+
+
+}

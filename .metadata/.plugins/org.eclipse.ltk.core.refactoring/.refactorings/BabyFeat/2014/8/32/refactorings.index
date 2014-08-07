@@ -1,0 +1,33 @@
+1407248754002	Delete elements
+1407248760593	Delete elements
+1407248764915	Delete element
+1407248777755	Delete elements
+1407249251877	Rename package 'greyhound.pages'
+1407314534532	Extract method 'appiumVersion'
+1407314545653	Extract method 'platformName'
+1407314560294	Extract method 'platformVersion'
+1407314569790	Extract method 'deviceName'
+1407314672280	Extract method 'createRemoteDriver'
+1407318070044	Extract method 'synchronize'
+1407321140406	Rename method 'synchronize'
+1407321245270	Extract method 'applicationPath'
+1407322222936	Delete element
+1407323337892	Delete element
+1407330524284	Extract method 'enterUsername'
+1407330535997	Extract method 'enterPassword'
+1407330551990	Extract method 'clickLogin'
+1407330579640	Extract method 'acceptAlert'
+1407330638396	Extract method 'addPayee'
+1407330794886	Extract method 'enterPayeeDetails'
+1407330978739	Extract method 'submitForm'
+1407331026092	Extract method 'confirmPayeeByPin'
+1407331052579	Extract method 'fundTransfer'
+1407332872785	Extract method 'choosePayee'
+1407332882986	Extract method 'enterRemark'
+1407332891530	Extract method 'enterAmount'
+1407333162851	Extract method 'confirmTransfer'
+1407333212359	Extract method 'accountStmt'
+1407333291748	Extract method 'goToMainMenu'
+1407333302389	Extract method 'logOut'
+1407383738227	Copy file
+1407383743181	Delete element

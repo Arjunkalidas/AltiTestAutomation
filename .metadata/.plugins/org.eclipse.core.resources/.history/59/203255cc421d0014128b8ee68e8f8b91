@@ -1,0 +1,9 @@
+package featdsl.core.utils;
+
+public class TestBase {
+
+	public static void main(String[] args) {
+
+	}
+
+}

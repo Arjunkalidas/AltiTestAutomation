@@ -1,0 +1,3 @@
+default_implicitWait=60
+host=localhost
+port=4723
