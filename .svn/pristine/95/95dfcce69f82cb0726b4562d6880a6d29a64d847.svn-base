@@ -1,0 +1,220 @@
+package featdsl.core.utils;
+
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import jxl.*;
+
+public class MyRepository {
+	public static String fileName = null;
+	public static  String path;
+	public  FileInputStream fis = null;
+	private XSSFWorkbook workbook = null;
+	private XSSFSheet sheet = null;
+	
+	public static void main(String args[]) throws Exception {
+		//String sheetName = "EriBank";
+		//String locator="a_userName";
+		//String attribute="id";
+		//MyRepository mr= new MyRepository();
+		//System.out.println(mr.getLocator(fileName, sheetName, locator, attribute));
+	}
+
+	public MyRepository(String path) {
+
+		this.path=path;
+		try {
+			fis = new FileInputStream(path);
+			workbook = new XSSFWorkbook(fis);
+			sheet = workbook.getSheetAt(0);
+			fis.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+
+	}
+
+	public String getNewLocator(String fileName, String sheetName,String locator,String attribute)
+	{
+		MyRepository mr= new MyRepository(path);
+		return mr.getLocator(fileName, sheetName, locator, attribute);
+	}
+
+	public String getLocator(String fileName, String sheetName,String locator,String attribute)
+	{
+		Workbook workbook1;
+		String attributeValue = null;
+		//		System.out.println(fileName +" "+ sheetName+" "+locator+" "+attribute);
+
+		try {
+			workbook1 = Workbook.getWorkbook(new File(fileName));
+			Sheet s1 = workbook1.getSheet(sheetName);
+			int locatorCell = s1.findCell(locator).getRow();
+			int attributeCell = s1.findCell(attribute).getColumn();
+			attributeValue=s1.getCell(attributeCell, locatorCell).getContents();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			return attributeValue;
+		}
+	}
+
+	public static Object[][] readXLData(String fileName, String sheetName,String label) {
+		// ** This function is created to initialize properties for test run
+		Object[][] obj =null;
+		try {
+			Workbook workbook1 = Workbook.getWorkbook(new File(fileName));
+			Sheet s1 = workbook1.getSheet(sheetName);
+
+			String labelBegin = label + "Begin";
+			String labelEnd = label + "End";
+
+			Cell labelBeginCell = s1.findCell(labelBegin);
+			Cell labelEndCell = s1.findCell(labelEnd);
+
+			int rowCount = labelEndCell.getRow() - labelBeginCell.getRow() - 1;
+			int columnCount = labelEndCell.getColumn()- labelBeginCell.getColumn() + 1;
+
+			obj = new Object[rowCount][columnCount];
+			System.out.println(rowCount + " " + columnCount);
+
+			for (int i = labelBeginCell.getColumn(), k = 0; i < labelEndCell.getColumn() + 1; i++, k++) {
+				for (int j = labelBeginCell.getRow() + 1, m = 0; j < labelEndCell.getRow(); j++, m++) {
+					obj[m][k] = s1.getCell(i, j).getContents();
+					System.out.println(obj[m][k]);
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			return obj;
+		}
+	}
+
+	public static Map readXLProperties(String fileName, String SheetName) {
+
+		Map hm = new HashMap<String, String>();
+		try {
+			String key = null, value = null;
+			Workbook workbook1 = Workbook.getWorkbook(new File(fileName));
+			Sheet s1 = workbook1.getSheet(SheetName);
+
+			for (int j = 0; j < s1.getRows(); j++) {
+				for (int i = 0; i < s1.getColumns(); i++) {
+					// System.out.println(s1.getCell(i, j).getContents());
+					// First Column would have keys hence check whether we are @
+					// first Column
+					if (i == 0) {
+						key = s1.getCell(i, j).getContents();
+					} else {
+						value = s1.getCell(i, j).getContents();
+					}
+				}
+				hm.put(key, value);
+			}
+			// System.out.println(hm.keySet());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return hm;
+	}
+
+	protected static Object[][] singleKeyMultipleValues(String fileName, String SheetName) {
+
+		Map hm = new HashMap<String, List<String>>();
+		Object[][] obj =null;
+		try {
+			String key = null, value = null;
+			Workbook workbook1 = Workbook.getWorkbook(new File(fileName));
+			Sheet s1 = workbook1.getSheet(SheetName);
+
+			for (int j = 0; j < s1.getRows(); j++) {
+				List li=new ArrayList<String>();		
+				for (int i = 0; i < s1.getColumns(); i++) {
+					if (i == 0) {
+						key = s1.getCell(i, j).getContents();
+					} else {
+						li.add( s1.getCell(i, j).getContents());
+					}
+				}
+				hm.put(key, li);
+			}
+			Set<String>keys=hm.keySet();
+
+			obj= new Object[2][keys.size()];
+			int i=0;
+
+			for(String key1:keys)
+			{
+				List<String> tempMap = (List<String>) hm.get(key1);
+				int j=0;
+				for (String string : tempMap) {
+					obj[j][i]=string;
+					System.out.println(obj[j][i]);
+					j++;
+				}
+				i++;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			return obj;
+		}
+	}
+
+	public static Object[][] newSingleKeyMultipleValues(String fileName, String SheetName, List<String> keyslist) {
+
+		Map hm = new HashMap<String, List<String>>();
+		Object[][] obj =null;
+		List li=null;
+		try {
+			String key = null, value = null;
+			Workbook workbook1 = Workbook.getWorkbook(new File(fileName));
+			Sheet s1 = workbook1.getSheet(SheetName);
+			for (int j = 0; j < s1.getRows(); j++) {
+				li=new ArrayList<String>();		
+				for (int i = 0; i < s1.getColumns(); i++) {
+					if (i == 0) {
+						key = s1.getCell(i, j).getContents();
+					} else {
+						li.add( s1.getCell(i, j).getContents());
+					}
+				}
+				hm.put(key, li);
+			}
+			List<String>keys=keyslist;
+			obj= new Object[li.size()][keys.size()];
+			int i=0;
+			for(String key1:keys)
+			{
+				List<String> tempMap = (List<String>) hm.get(key1);
+				int j=0;
+				for (String string : tempMap) {
+					obj[j][i]=string;
+					j++;
+				}
+				i++;
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			return obj;
+		}
+	}
+}

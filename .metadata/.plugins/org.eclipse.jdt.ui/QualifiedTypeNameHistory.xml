@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor"/>
+<fullyQualifiedTypeName name="java.util.Properties"/>
+<fullyQualifiedTypeName name="featdsl.core.utils.Xls_Reader"/>
+<fullyQualifiedTypeName name="net.sf.saxon.functions.Concat"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="org.openqa.selenium.OutputType"/>
+<fullyQualifiedTypeName name="com.sun.jna.platform.FileUtils"/>
+<fullyQualifiedTypeName name="org.apache.commons.io.FileUtils"/>
+<fullyQualifiedTypeName name="featdsl.core.utils.MyRepository"/>
+<fullyQualifiedTypeName name="com.altimetrik.wallet.AltiFinWallet"/>
+<fullyQualifiedTypeName name="featdsl.core.utils.TestBase"/>
+<fullyQualifiedTypeName name="aiframework.core.utils.Xls_Reader"/>
+</qualifiedTypeNameHistroy>
